@@ -15,7 +15,7 @@
       </div>
       <div class="mt-3 d-flex justify-content-end">
       <b-button variant="outline-secondary" class="mr-2" @click="hideModal"> Cancelar </b-button>
-      <b-button variant="outline-danger" class="mr-2" @click="confirmRemove"> Excluir </b-button>
+      <b-button variant="outline-danger" class="mr-2" @click="confirmRemoveTask"> Excluir </b-button>
       </div>
     </b-modal>
   </div>
@@ -45,6 +45,11 @@ export default{
     hideModal(){
       this.$refs.modalRemove.hide();
     },
+    confirmRemoveTask(){
+      this.tasks.splice(this.taskSelected.index, 1);
+      localStorage.setItem("task", JSON.stringify(this.tasks));
+      this.hideModal();
+    }
   }
 }
 </script>
